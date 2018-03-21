@@ -1,6 +1,6 @@
-export class Pet {
+export class Tamagotchi {
 
-  constructor(name, food, play, sleep)
+  constructor(name, foodLevel, playLevel, sleepLevel)
   {
     this.name = name;
     this.foodLevel = 100;
@@ -8,37 +8,38 @@ export class Pet {
     this.sleepLevel = 100;
   }
 
-  tamaName()
-  {
-    let name = name;
-    return this.name;
-  }
+  // tamaName()
+  // {
+  //   let name = name;
+  //   return this.name;
+  // }
 
   setHunger()
   {
     setInterval(() => {
       this.foodLevel--;
-    }, 300); //food level will decrement by 1 every 5 minutes
+    }, 300000); //food level will decrement by 5 minutes
   }
 
-  needFood()
-  {
-      if(this.foodLevel >= 90){
-        return false; //don't need to be fed
-      } else if (this.foodLevel <= 75){
-        return true; //tama needs to be fed
-      } else
+  needFood(){
+    if(this.foodLevel >= 90){
+      return false;
+    } else if (this.foodLevel <= 75) {
+      return true;
+    }
   }
+
   tamaPlay()
   {
     setInterval(() => {
-      this.foodLevel--;
-    }, 7200); //play with with tama every 2 hours
+      this.playLevel--;
+    }, 150000); //play with with tama every 2.5 min
   }
 
   needPlay()
   {
-    if(this.playLevel >= 60) {
+    if(this.playLevel >= 60)
+    {
       return false; //don't need to be played with
     } else if (this.playLevel <= 55){
       return true; //you need to play with your tama
@@ -49,19 +50,21 @@ export class Pet {
   {
     setInterval(() => {
       this.sleepLevel--;
-    }, 28800); //tama sleep level will decrease every 2 hours
+    }, 3600000); //tama sleep level will decrease every 60
   }
 
   needSleep()
   {
-    if(this.sleepLevel >= 75) {
+    if(this.sleepLevel >= 75)
+    {
       return false; //doesn't need sleep
     } else if (this.sleepLevel <= 70){
       return true; //tama needs sleep
     }
   }
 
-  didTamaDieOfSleepDeprivation() {
+  didTamaDieOfSleepDeprivation()
+  {
     if (this.sleepLevel <= 0) {
       return true;
     } else {
@@ -69,7 +72,8 @@ export class Pet {
     }
   }
 
-  didTamaDieOfDtarvation() {
+  didTamaDieOfStarvation()
+  {
     if (this.foodLevel <= 0) {
       return true;
     } else {
@@ -77,5 +81,10 @@ export class Pet {
     }
   }
 
-  
+  didTamaDie(){
+    if(this.foodLevel <= 0 && this.sleepLevel <= 0)
+    {
+      return (this.didTamaDieOfStarvation() || this.didTamaDieOfSleepDeprivation());
+    }
+  }
 }
