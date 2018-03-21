@@ -50,7 +50,7 @@ export class Tamagotchi {
   {
     setInterval(() => {
       this.sleepLevel--;
-    }, 3600000); //tama sleep level will decrease every 60
+    }, 100000);
   }
 
   needSleep()

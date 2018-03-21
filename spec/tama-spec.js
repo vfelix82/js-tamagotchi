@@ -5,6 +5,7 @@ describe ('tamagotchi', function() {
 
   beforeEach(function() {
       jasmine.clock().install();
+      testTamagotchi.sleepLevel = 100;
     });
 
     afterEach(function() {
@@ -23,15 +24,25 @@ describe ('tamagotchi', function() {
     expect(testTamagotchi.foodLevel).toEqual(99);
   });
 
-  it('should have play decrement every 2.5 minutes', function(){
+  it('should1 have play decrement every 2.5 minutes', function(){
     testTamagotchi.tamaPlay();
     jasmine.clock().tick(150000);
     expect(testTamagotchi.playLevel).toEqual(99);
   });
 
-  it('should have play decrement every 1 hour', function(){
+  it('should have sleep decrement every 15 minutes', function(){
     testTamagotchi.tamaSleep();
-    jasmine.clock().tick(3600000);
+    jasmine.clock().tick(900000);
     expect(testTamagotchi.sleepLevel).toEqual(99);
+  });
+
+
+//FAILING TEST
+  it('should die of sleep deprivation if sleep level reaches zero', function(){
+    testTamagotchi.tamaSleep();
+    console.log(testTamagotchi.sleepLevel);
+    jasmine.clock().tick(10001);
+    console.log(testTamagotchi.sleepLevel);
+    expect(testTamagotchi.didTamaDieOfSleepDeprivation()).toEqual(true);
   });
 });
