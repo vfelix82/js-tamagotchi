@@ -1,6 +1,6 @@
 export class Tamagotchi {
 
-  constructor(name, foodLevel, playLevel, sleepLevel)
+  constructor(name)
   {
     this.name = name;
     this.foodLevel = 100;
@@ -8,17 +8,11 @@ export class Tamagotchi {
     this.sleepLevel = 100;
   }
 
-  // tamaName()
-  // {
-  //   let name = name;
-  //   return this.name;
-  // }
-
   setHunger()
   {
     setInterval(() => {
       this.foodLevel--;
-    }, 300000); //food level will decrement by 5 minutes
+    }, 5000); //food level will decrement by 5 minutes
   }
 
   needFood(){
@@ -33,7 +27,7 @@ export class Tamagotchi {
   {
     setInterval(() => {
       this.playLevel--;
-    }, 150000); //play with with tama every 2.5 min
+    }, 5000); //play with with tama every 2.5 min
   }
 
   needPlay()
@@ -50,7 +44,7 @@ export class Tamagotchi {
   {
     setInterval(() => {
       this.sleepLevel--;
-    }, 100000);
+    }, 1000); //play with with tama every 2.5 min
   }
 
   needSleep()

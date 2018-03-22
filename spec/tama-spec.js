@@ -20,19 +20,19 @@ describe ('tamagotchi', function() {
 
   it('should have hunger decrement every 5 minutes', function(){
     testTamagotchi.setHunger();
-    jasmine.clock().tick(300000);
+    jasmine.clock().tick(5000);
     expect(testTamagotchi.foodLevel).toEqual(99);
   });
 
   it('should1 have play decrement every 2.5 minutes', function(){
     testTamagotchi.tamaPlay();
-    jasmine.clock().tick(150000);
+    jasmine.clock().tick(5000);
     expect(testTamagotchi.playLevel).toEqual(99);
   });
 
   it('should have sleep decrement every 15 minutes', function(){
     testTamagotchi.tamaSleep();
-    jasmine.clock().tick(900000);
+    jasmine.clock().tick(1000);
     expect(testTamagotchi.sleepLevel).toEqual(99);
   });
 
@@ -41,8 +41,7 @@ describe ('tamagotchi', function() {
   it('should die of sleep deprivation if sleep level reaches zero', function(){
     testTamagotchi.tamaSleep();
     console.log(testTamagotchi.sleepLevel);
-    jasmine.clock().tick(10001);
-    console.log(testTamagotchi.sleepLevel);
+    jasmine.clock().tick(100001);
     expect(testTamagotchi.didTamaDieOfSleepDeprivation()).toEqual(true);
   });
 });
